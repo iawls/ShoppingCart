@@ -1,0 +1,40 @@
+﻿<Page
+    x:Class="ShoppingCart.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ShoppingCart"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+   
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <TextBlock x:Name="ListHeader" HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Shopping Cart" VerticalAlignment="Top" FontSize="26.667"/>
+                <Button x:Name="StartButton" Content="Add" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Click="StartButton_Click" Width="69" Height="32"/>
+                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10,50,0,0" TextWrapping="Wrap" Text="Add some items to your shopping list!" VerticalAlignment="Top"/>
+                <TextBox x:Name="ListBox" HorizontalAlignment="Left" Margin="10,75,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="253"/>
+
+                <ListView x:Name="ShoppingList" HorizontalAlignment="Left" Height="425" Margin="10,162,0,0" VerticalAlignment="Top" Width="310" CanDragItems="True" CanReorderItems="True" IsItemClickEnabled="False" SelectionMode="None" AllowDrop="True" SelectionChanged="ShoppingList_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <Grid Width="310">
+                                    <TextBlock Text="{Binding name}" HorizontalAlignment="Left" FontSize="21.333" Grid.Column="0"/>
+                                    <Button Name="DeleteButton" HorizontalAlignment="Right" Grid.Column="1" Margin="0,0,25,0" Click="DeleteButton_Click">
+                                        <SymbolIcon Symbol="Delete"/>
+                                    </Button>
+                                </Grid>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+
+
+        <TextBlock x:Name="errorMessage" HorizontalAlignment="Left" Margin="124,125,0,0" TextWrapping="Wrap" Text="seems fine" VerticalAlignment="Top" ManipulationMode="All" Foreground="#FFF90000" Width="196"/>
+        <Button x:Name="removeButton" Content="Clear All" HorizontalAlignment="Left" Margin="14,587,0,0" VerticalAlignment="Top" Click="removeButton_Click"/>
+        <CommandBar VerticalAlignment="Bottom" ClosedDisplayMode="Compact">
+            <AppBarButton x:Name="HamburgerButton" FontFamily="Segoe MDL2 Assets" Icon="Bookmarks" Label="Recipes"
+                    Width="50" Height="50" Background="Transparent" Click="Navigate_to_Recipes_Click"/>
+        </CommandBar>
+    </Grid>
+</Page>
